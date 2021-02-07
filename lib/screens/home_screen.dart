@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
           brightness: Brightness.light,
           backgroundColor: Colors.white,
           title: Text(
-            'facebook',
+            'facebook', 
             style: TextStyle(
               color: Palette.facebookBlue,
               fontSize: 28.0,
