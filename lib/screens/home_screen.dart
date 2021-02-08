@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:myapp/config/pallete.dart';
+import 'package:myapp/data/data.dart';
+import 'package:myapp/widgets/create_post_container.dart';
 import 'package:myapp/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,13 +15,13 @@ class HomeScreen extends StatelessWidget {
           brightness: Brightness.light,
           backgroundColor: Colors.white,
           title: Text(
-            'facebook', 
+            'facebook',
             style: TextStyle(
               color: Palette.facebookBlue,
               fontSize: 28.0,
               fontWeight: FontWeight.bold,
               letterSpacing: -1.2,
-            ),  
+            ),
           ),
           centerTitle: false,
           floating: true,
@@ -27,14 +29,17 @@ class HomeScreen extends StatelessWidget {
             CircleButton(
               icon: Icons.search,
               iconSize: 30.0,
-              onPressed: () => print("search"),
+              onPressed: () => print("Search"),
             ),
             CircleButton(
               icon: MdiIcons.facebookMessenger,
               iconSize: 30.0,
-              onPressed: () => print("search"),
+              onPressed: () => print("Messenger"),
             )
           ],
+        ),
+        SliverToBoxAdapter(
+          child: CratePostContainer(currentUser: currentUser)
         )
       ],
     ));
