@@ -16,7 +16,7 @@ class Stories extends StatelessWidget {
     return Container(
       child: Container(
         height: 200,
-        color: Colors.purple,
+        color: Colors.white,
         child: ListView.builder(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
           scrollDirection: Axis.horizontal,
@@ -92,7 +92,24 @@ class _StoryCard extends StatelessWidget {
                       onPressed: () => print('Added to story'),
                     ),
                   )
-                : ProfileAvatar(imageUrl: story.user.imageUrl),
+                : ProfileAvatar(
+                    imageUrl: story.user.imageUrl,
+                    hasBorder: !story.isViewed,
+                  ),
+          ),
+          Positioned(
+            bottom: 8,
+            left: 8,
+            right: 8,
+            child: Text(
+              isAddStory ? 'Add to Story' : story.user.name,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),
