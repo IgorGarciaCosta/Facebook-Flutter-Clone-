@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:myapp/config/pallete.dart';
 import 'package:myapp/data/data.dart';
+import 'package:myapp/models/models.dart';
 import 'package:myapp/widgets/create_post_container.dart';
 import 'package:myapp/widgets/widgets.dart';
 
@@ -52,7 +53,17 @@ class HomeScreen extends StatelessWidget {
         SliverPadding(
           padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
           sliver: SliverToBoxAdapter(
-            child: Stories(currentUser:currentUser, stories:stories),
+            child: Stories(currentUser: currentUser, stories: stories),
+          ),
+        ),
+
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              final Post post = posts[index];
+              return PostContainer(post: post);
+            },
+            childCount: posts.length,
           ),
         ),
       ],
