@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/models.dart';
 import 'package:myapp/widgets/profile_avatar.dart';
+import 'package:myapp/widgets/responsive.dart';
 
 class CratePostContainer extends StatelessWidget {
   final User currentUser;
@@ -12,7 +13,13 @@ class CratePostContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final bool isDesktop = Responsive.isDesktop(context);
+    return Card(
+      margin: EdgeInsets.symmetric(horizontal: isDesktop ? 5 : 0),
+      elevation: isDesktop ? 1 : 0,
+      shape: isDesktop
+          ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+          : null,
       child: Container(
         padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
         color: Colors.white,

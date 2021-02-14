@@ -4,6 +4,7 @@ import 'package:myapp/config/pallete.dart';
 import 'package:myapp/data/data.dart';
 import 'package:myapp/models/models.dart';
 import 'package:myapp/widgets/profile_avatar.dart';
+import 'package:myapp/widgets/responsive.dart';
 
 class Stories extends StatelessWidget {
   final User currentUser;
@@ -16,7 +17,8 @@ class Stories extends StatelessWidget {
     return Container(
       child: Container(
         height: 200,
-        color: Colors.white,
+        color:
+            Responsive.isDesktop(context) ? Colors.transparent : Colors.white,
         child: ListView.builder(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
           scrollDirection: Axis.horizontal,
@@ -72,8 +74,17 @@ class _StoryCard extends StatelessWidget {
             height: double.infinity,
             width: 110,
             decoration: BoxDecoration(
-                gradient: Palette.storyGradient,
-                borderRadius: BorderRadius.circular(12)),
+              gradient: Palette.storyGradient,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: Responsive.isDesktop(context)
+                  ? const [
+                      BoxShadow(
+                          color: Colors.black26,
+                          offset: Offset(0, 2),
+                          blurRadius: 4),
+                    ]
+                  : null, //no boxShadow
+            ),
           ),
           Positioned(
             top: 8,
